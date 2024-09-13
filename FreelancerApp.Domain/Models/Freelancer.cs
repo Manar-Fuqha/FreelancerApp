@@ -1,4 +1,4 @@
-﻿namespace Task2.Models
+﻿namespace FreelancerApp.Domain.Models
 {
     public class Freelancer
     {

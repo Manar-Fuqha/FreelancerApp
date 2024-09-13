@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Task2.Migrations
+namespace FreelancerApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class addTables : Migration

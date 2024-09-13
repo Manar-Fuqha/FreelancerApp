@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Task2.Models;
+using FreelancerApp.Domain.Models;
 
-namespace Task2
+namespace FreelancerApp.Infrastructure
 {
     public class Context : DbContext
     {

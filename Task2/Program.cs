@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Task2;
+using FreelancerApp.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 

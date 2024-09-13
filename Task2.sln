@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2", "Task2\Task2.csproj", "{13197476-4295-45F6-80B4-C4A264414DFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreelancerApp.Api", "Task2\FreelancerApp.Api.csproj", "{13197476-4295-45F6-80B4-C4A264414DFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerApp.Infrastructure", "FreelancerApp.Infrastructure\FreelancerApp.Infrastructure.csproj", "{47FFF07B-A3C2-4181-BBA6-2C39E4E147F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerApp.Domain", "FreelancerApp.Domain\FreelancerApp.Domain.csproj", "{119C514A-C909-4695-BA2D-C634243A8130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{13197476-4295-45F6-80B4-C4A264414DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13197476-4295-45F6-80B4-C4A264414DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13197476-4295-45F6-80B4-C4A264414DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FFF07B-A3C2-4181-BBA6-2C39E4E147F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FFF07B-A3C2-4181-BBA6-2C39E4E147F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FFF07B-A3C2-4181-BBA6-2C39E4E147F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FFF07B-A3C2-4181-BBA6-2C39E4E147F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{119C514A-C909-4695-BA2D-C634243A8130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119C514A-C909-4695-BA2D-C634243A8130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119C514A-C909-4695-BA2D-C634243A8130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119C514A-C909-4695-BA2D-C634243A8130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
