@@ -42,7 +42,7 @@ namespace FreelancerApp.Infrastructure.GenericRepositories
           return  await dbContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             var entity = await dbContext.Set<T>().FindAsync(id);
             if (entity is null)
