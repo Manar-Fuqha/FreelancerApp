@@ -6,5 +6,6 @@
         public string name { get; set; }
         public string email { get; set; }
 
+        public ICollection<Project> Projects { get; set; }
     }
 }

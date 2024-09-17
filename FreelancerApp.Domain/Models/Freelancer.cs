@@ -9,5 +9,7 @@
         public string skillSet { get; set; }
         public decimal hourlyRate { get; set; }
 
+
+        public ICollection<Project> Projects { get; set; }
     }
 }
