@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FreelancerApp.Domain;
 using AutoMapper;
 using FreelancerApp.Application.Exceptions;
+using FreelancerApp.Domain.DTOs.Freelancers;
 
 namespace FreelancerApp.Application.Services.Implementations
 {
@@ -22,10 +23,10 @@ namespace FreelancerApp.Application.Services.Implementations
             this.mapper = mapper;
         }
 
-        public async Task<Freelancer> Create(Freelancer freelancer)
+        public async Task<Freelancer> Create(CreateFreelancerDto freelancer)
         {
-           
-            return await unitOfWork.FreelancerRepository.CreateAsync( freelancer );
+            var mapped = mapper.Map<Freelancer>(freelancer);
+            return await unitOfWork.FreelancerRepository.CreateAsync( mapped );
         }
 
         public async Task Delete(Guid id)
@@ -55,7 +56,7 @@ namespace FreelancerApp.Application.Services.Implementations
             return freelancer;
         }
 
-        public async Task Update(Guid id, Freelancer freelancer)
+        public async Task Update(Guid id, UpdateFreelancerRequestDto freelancer)
         {
            var getFreelance = await unitOfWork.FreelancerRepository.GetByIdAsync(id);
             if(getFreelance is null)
@@ -63,8 +64,8 @@ namespace FreelancerApp.Application.Services.Implementations
                 throw new NotFoundException($"Freelancer with id = {id} is not found");
             }
 
-            var freelacerMapper = mapper.Map(freelancer , getFreelance);
-            await unitOfWork.FreelancerRepository.UpdateAsync(id, freelacerMapper);
+            mapper.Map(freelancer , getFreelance);
+            await unitOfWork.FreelancerRepository.UpdateAsync(id, getFreelance);
 
         }
     }

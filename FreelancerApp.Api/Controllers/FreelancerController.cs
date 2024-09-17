@@ -1,5 +1,6 @@
 ﻿
 using FreelancerApp.Application.Services.Abstracts;
+using FreelancerApp.Domain.DTOs.Freelancers;
 using FreelancerApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,13 +32,13 @@ namespace FreelancerApp.Api.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Freelancer freelancer)
+        public async Task<IActionResult> Create([FromBody] CreateFreelancerDto freelancer)
         {
             return Ok(await freelancerService.Create(freelancer)) ;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id , [FromBody] Freelancer freelancer)
+        public async Task<IActionResult> Update(Guid id , [FromBody] UpdateFreelancerRequestDto freelancer)
         {
             await freelancerService.Update(id, freelancer);
             return Ok("Updated Successfully");

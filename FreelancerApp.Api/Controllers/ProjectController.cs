@@ -1,4 +1,5 @@
 ﻿using FreelancerApp.Application.Services.Abstracts;
+using FreelancerApp.Domain.DTOs.Projects;
 using FreelancerApp.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,14 +31,14 @@ namespace FreelancerApp.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create (Project project)
+        public async Task<IActionResult> Create ([FromBody]CreateProjectRequestDto project)
         {
             await projectService.Create(project);
             return Ok("Created Successfully");
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id , Project project)
+        public async Task<IActionResult> Update(Guid id , UpdateProjectRequestDto project)
         {
             await projectService.Update(id , project);
             return Ok("Updated Successfully");

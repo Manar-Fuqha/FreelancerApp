@@ -1,6 +1,8 @@
-﻿using FreelancerApp.Application.Exceptions;
+﻿using AutoMapper;
+using FreelancerApp.Application.Exceptions;
 using FreelancerApp.Application.Services.Abstracts;
 using FreelancerApp.Domain;
+using FreelancerApp.Domain.DTOs.Projects;
 using FreelancerApp.Domain.Models;
 
 namespace FreelancerApp.Application.Services.Implementations
@@ -8,19 +10,19 @@ namespace FreelancerApp.Application.Services.Implementations
     public class ProjectService : IProjectService
     {
         private readonly IUnitOfWork<Project> unitOfWork;
+        private readonly IMapper mapper;
 
-        public ProjectService(IUnitOfWork<Project> unitOfWork)
+        public ProjectService(IUnitOfWork<Project> unitOfWork , IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
 
-        public async Task<Project> Create(Project project)
+        public async Task<Project> Create(CreateProjectRequestDto project)
         {
-           //if(project is null)
-           // {
-           //     // 
-           // }
-           return await unitOfWork.ProjectRepository.CreateAsync(project);
+           
+           var mapped = mapper.Map<Project>(project);
+           return await unitOfWork.ProjectRepository.CreateAsync(mapped);
 
         }
 
@@ -49,14 +51,15 @@ namespace FreelancerApp.Application.Services.Implementations
             return getProject;
         }
 
-        public async Task Update(Guid id, Project project)
+        public async Task Update(Guid id, UpdateProjectRequestDto project)
         {
             var getProject = await unitOfWork.ProjectRepository.GetByIdAsync(id);
             if (getProject is null)
             {
                 throw new NotFoundException($"Proect with id = {id} is not found");
             }
-            await unitOfWork.ProjectRepository.UpdateAsync(id, project);
+            var mapped = mapper.Map(project, getProject);
+            await unitOfWork.ProjectRepository.UpdateAsync(id, mapped);
         }
     }
 }
