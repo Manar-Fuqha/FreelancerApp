@@ -1,4 +1,5 @@
-﻿using FreelancerApp.Domain.Models;
+﻿using FreelancerApp.Domain.DTOs.Projects;
+using FreelancerApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace FreelancerApp.Application.Services.Abstracts
     {
         Task<Project> GetProjectById(Guid ProjectId, bool includeClient, bool includeFreelance);
         Task<IReadOnlyList<Project>> GetAllProjects( bool includeClient, bool includeFreelance);
-        Task<Project> Create(Project project);
-        Task Update(Guid id, Project project);
+        Task<Project> Create(CreateProjectRequestDto project);
+        Task Update(Guid id, UpdateProjectRequestDto project);
         Task Delete(Guid id);
     }
 }
