@@ -36,19 +36,20 @@ namespace FreelancerApp.Application.Services.Implementations
             await unitOfWork.ProjectRepository.DeleteAsync(id);
         }
 
-        public async Task<IReadOnlyList<Project>> GetAllProjects( bool includeClient, bool includeFreelance)
+        public async Task<IReadOnlyList<ProjectDto>> GetAllProjects( bool includeClient, bool includeFreelance)
         {
-            return await unitOfWork.ProjectRepository.GetAllProjectsAsync(includeClient, includeFreelance);
+           var project= await unitOfWork.ProjectRepository.GetAllProjectsAsync(includeClient, includeFreelance);
+            return mapper.Map<IReadOnlyList< ProjectDto>>(project);
         }
 
-        public async Task<Project> GetProjectById(Guid ProjectId , bool includeClient , bool includeFreelance)
+        public async Task<ProjectDto> GetProjectById(Guid ProjectId , bool includeClient , bool includeFreelance)
         {
             var getProject = await unitOfWork.ProjectRepository.GetProjectByIdAsync(ProjectId  , includeClient , includeFreelance);
             if(getProject is null)
             {
                 throw new NotFoundException($"Proect with id = {ProjectId} is not found");
             }
-            return getProject;
+            return  mapper.Map<ProjectDto>(getProject); 
         }
 
         public async Task Update(Guid id, UpdateProjectRequestDto project)

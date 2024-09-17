@@ -21,21 +21,21 @@ namespace FreelancerApp.Infrastructure.Implementation
 
         public async Task<IReadOnlyList<Project>> GetAllProjectsAsync( bool IncludeClient, bool includeFreelancer)
         {
-            var projects =  dbContext.Set<Project>();
-           if( IncludeClient == true ) projects.Include(x => x.client) ;
-           if (includeFreelancer == true) projects.Include(x => x.freelancer);
+            var projects =  dbContext.Projects.AsQueryable();
+           if( IncludeClient == true ) projects = projects.Include(x => x.client) ;
+           if (includeFreelancer == true) projects = projects.Include(x => x.freelancer);
            return await projects.ToListAsync();
         }
 
         public async Task<Project> GetProjectByIdAsync(Guid id, bool IncludeClient, bool includeFreelancer)
         {
-            var project = dbContext.Set<Project>();
+            var project = dbContext.Projects.AsQueryable();
             if (project is null)
             {
                 throw new KeyNotFoundException($"Project with id ={id} is not found");
             }
-            if (IncludeClient == true) project.Include(x => x.client);
-            if (includeFreelancer == true) project.Include(x => x.freelancer);
+            if (IncludeClient == true) project = project.Include(x => x.client);
+            if (includeFreelancer == true) project = project.Include(x => x.freelancer);
 
 
             return await project.FirstOrDefaultAsync(x => x.Id == id);

@@ -10,8 +10,8 @@ namespace FreelancerApp.Application.Services.Abstracts
 {
     public interface IProjectService
     {
-        Task<Project> GetProjectById(Guid ProjectId, bool includeClient, bool includeFreelance);
-        Task<IReadOnlyList<Project>> GetAllProjects( bool includeClient, bool includeFreelance);
+        Task<ProjectDto> GetProjectById(Guid ProjectId, bool includeClient, bool includeFreelance);
+        Task<IReadOnlyList<ProjectDto>> GetAllProjects( bool includeClient, bool includeFreelance);
         Task<Project> Create(CreateProjectRequestDto project);
         Task Update(Guid id, UpdateProjectRequestDto project);
         Task Delete(Guid id);

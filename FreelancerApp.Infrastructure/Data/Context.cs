@@ -58,6 +58,18 @@ namespace FreelancerApp.Infrastructure
                 }
             
                 );
+
+
+
+            modelBuilder.Entity<Project>()
+            .HasOne(p => p.client)
+            .WithMany(c => c.Projects)
+            .HasForeignKey(p => p.clientId);
+
+            modelBuilder.Entity<Project>()
+                .HasOne(p => p.freelancer)
+                .WithMany(f => f.Projects)
+                .HasForeignKey(p => p.freelancerId);
         }
 
         public DbSet<Freelancer> Freelancer { get; set; }
