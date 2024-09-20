@@ -13,7 +13,7 @@ namespace FreelancerApp.Domain.IGenericRepositories
         Task<T> UpdateAsync(Guid id ,  T entity);
         Task<string> DeleteAsync(Guid id);
         Task<IReadOnlyList<T>> GetAllAsync();
-        Task<T> GetByIdAsync(Guid id);
+        Task<T>  GetByIdAsync(Guid id);
 
     }
 }

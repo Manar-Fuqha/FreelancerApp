@@ -1,11 +1,9 @@
-﻿using FreelancerApp.Application.Services.Abstracts;
+﻿using FluentValidation;
+using FreelancerApp.Application.Services.Abstracts;
 using FreelancerApp.Application.Services.Implementations;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
+using System.Reflection;
 
 namespace FreelancerApp.Application
 {
@@ -20,6 +18,10 @@ namespace FreelancerApp.Application
             services.AddScoped<IProjectService , ProjectService>();
             services.AddScoped<IFreelancerService, FreelancerService>();
 
+
+
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             return services;
         }
 

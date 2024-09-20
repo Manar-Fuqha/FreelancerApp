@@ -40,5 +40,7 @@ namespace FreelancerApp.Infrastructure.Implementation
 
             return await project.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+      
     }
 }
